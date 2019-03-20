@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Train Time</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -11,13 +11,70 @@
 </head>
 
 <body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="d-flex justify-content-center">Catch Yo Train!</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5>Current Train Schedule</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <h6 class="card-title col-md-3">Train Name</h6>
+                    <h6 class="card-title col-md-3">Destination</h6>
+                    <h6 class="card-title col-md-2">Frequency (min)</h6>
+                    <h6 class="card-title col-md-2">Next Arrival</h6>
+                    <h6 class="card-title col-md-2">Minutes Away</h6>
+                </div>
+                <hr class="my-2">
+                <div id="new-user"></div>
+                <div class="row">
+                    <div class="col-md-2 user"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5>Add Train</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="trainName">Train Name</label>
+                        <input type="text" class="form-control" id="trainName" placeholder="What Train?">
+                    </div>
+                    <div class="form-group">
+                        <label for="trainDestination">Destination</label>
+                        <input type="text" class="form-control" id="trainDestination" placeholder="Where to?">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstTime">First Train Time (HH:mm - military time)</label>
+                        <input type="time" class="form-control" id="firstTime" placeholder="When is the first one?">
+                    </div>
+                    <div class="form-group">
+                        <label for="frequency">Frequency (min)</label>
+                        <input type="text" class="form-control" id="frequency" placeholder="How often does it arrive?">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
 
 
+
+
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/javascript/script.js"></script>
 </body>
 
