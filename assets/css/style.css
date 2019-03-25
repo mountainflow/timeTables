@@ -6,3 +6,11 @@
 .card {
     margin-top: 2rem;
 }
+
+.items {
+    margin: 0 10px 0 10px;
+}
+
+p {
+    border-bottom: solid 1px lightgray;
+}

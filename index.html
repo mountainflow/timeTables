@@ -23,17 +23,15 @@
             <div class="card-body">
                 <div class="card-header">
                     <div class="row">
-                        <h6 class="card-title col-md-3">Train Name</h6>
-                        <h6 class="card-title col-md-3">Destination</h6>
-                        <h6 class="card-title col-md-2">Frequency (min)</h6>
-                        <h6 class="card-title col-md-2">Next Arrival</h6>
-                        <h6 class="card-title col-md-2">Minutes Away</h6>
+                        <h6 class="card-title col">Train Name</h6>
+                        <h6 class="card-title col">Destination</h6>
+                        <h6 class="card-title col">Frequency (min)</h6>
+                        <h6 class="card-title col">Next Arrival</h6>
+                        <h6 class="card-title col">Minutes Away</h6>
                     </div>
                 </div>
-                <hr class="my-2">
-                <div id="new-user"></div>
-                <div class="row">
-                    <div class="col-md-2 user"></div>
+                <div class="items">
+                    <div id="new-train"></div>
                 </div>
             </div>
         </div>
@@ -46,20 +44,22 @@
                 <form>
                     <div class="form-group">
                         <label for="trainName">Train Name</label>
-                        <input type="text" class="form-control" id="trainName" placeholder="What Train?">
+                        <input type="text" class="form-control" id="trainName" placeholder="What Train?" required>
                     </div>
                     <div class="form-group">
                         <label for="trainDestination">Destination</label>
-                        <input type="text" class="form-control" id="trainDestination" placeholder="Where to?">
+                        <input type="text" class="form-control" id="trainDestination" placeholder="Where to?" required>
                     </div>
                     <div class="form-group">
                         <label for="firstTime">First Train Time (HH:mm - 24 hour format)</label>
-                        <input type="text" class="form-control" id="firstTime" placeholder="When is the first one?"
-                            pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
+                        <input type="text" class="form-control" id="firstTime"
+                            placeholder="When is the first one of the day?" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="frequency">Frequency (min)</label>
-                        <input type="text" class="form-control" id="frequency" placeholder="How often does it arrive?">
+                        <input type="text" class="form-control" id="frequency" placeholder="How often does it arrive?"
+                            required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

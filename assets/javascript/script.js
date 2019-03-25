@@ -31,14 +31,46 @@ $("button").on("click", function (event) {
     //send info to firebase
     dataRef.push(newTrain);
 
-    console.log(newTrain.trainName);
-    console.log(newTrain.trainDestination);
-    console.log(newTrain.firstTime);
-    console.log(newTrain.frequency);
+    //clear text-boxes
+    $("#trainName").val("");
+    $("#trainDestination").val("");
+    $("#firstTime").val("");
+    $("#frequency").val("");
 });
 
 
-
 //retrieve info from firebase
+dataRef.on("child_added", function (childSnapshot) {
 
-//create new rows with retrieved information
+    //variables for new information
+    let trainName = childSnapshot.val().name;
+    let trainDestination = childSnapshot.val().destination;
+    let firstTime = childSnapshot.val().firstTime;
+    let frequency = childSnapshot.val().frequency;
+
+    console.log("train name: " + trainName);
+    console.log("destination: " + trainDestination);
+    console.log("start time: " + firstTime);
+    console.log("frequency: " + frequency);
+
+    /*calculate with moment
+    current time
+    first train time
+    frequency
+    minutes to next*/
+    let now = moment();
+    let nextArrival = moment.unix(firstTime).format("HH:mm");
+    let minAway = moment
+
+    console.log("current time: " + now);
+
+    //create new rows with retrieved information
+    let newRow = $("<div>").addClass("row").append(
+        $("<p>").addClass("col").text(trainName),
+        $("<p>").addClass("col").text(trainDestination),
+        $("<p>").addClass("col").text(frequency),
+        $("<p>").addClass("col").text(nextArrival),
+        $("<p>").addClass("col").text(""),
+    );
+    $("#new-train").append(newRow);
+});
