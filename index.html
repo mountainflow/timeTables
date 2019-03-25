@@ -5,15 +5,15 @@
     <title>Train Time</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1 class="d-flex justify-content-center">Catch Yo Train!</h1>
+            <h1 class="text-center">Catch Yo Train!</h1>
         </div>
 
         <div class="card">
@@ -21,46 +21,20 @@
                 <h5>Current Train Schedule</h5>
             </div>
             <div class="card-body">
-
-                <table class="table">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">Train Name</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Frequency (min)</th>
-                            <th scope="col">Next Arrival</th>
-                            <th scope="col">Minutes Away</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Orient Express</td>
-                            <td>Tokyo</td>
-                            <td>12</td>
-                            <td>10:15</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>Another Train</td>
-                            <td>Some Destination</td>
-                            <td>5</td>
-                            <td>00:09</td>
-                            <td>13</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- <div class="row">
-                <h6 class="card-title col-md-3">Train Name</h6>
-                <h6 class="card-title col-md-3">Destination</h6>
-                <h6 class="card-title col-md-2">Frequency (min)</h6>
-                <h6 class="card-title col-md-2">Next Arrival</h6>
-                <h6 class="card-title col-md-2">Minutes Away</h6>
-            </div>
-            <hr class="my-2">
-            <div id="new-user"></div>
-            <div class="row">
-                <div class="col-md-2 user"></div>
-            </div> -->
+                <div class="card-header">
+                    <div class="row">
+                        <h6 class="card-title col-md-3">Train Name</h6>
+                        <h6 class="card-title col-md-3">Destination</h6>
+                        <h6 class="card-title col-md-2">Frequency (min)</h6>
+                        <h6 class="card-title col-md-2">Next Arrival</h6>
+                        <h6 class="card-title col-md-2">Minutes Away</h6>
+                    </div>
+                </div>
+                <hr class="my-2">
+                <div id="new-user"></div>
+                <div class="row">
+                    <div class="col-md-2 user"></div>
+                </div>
             </div>
         </div>
 
@@ -79,8 +53,9 @@
                         <input type="text" class="form-control" id="trainDestination" placeholder="Where to?">
                     </div>
                     <div class="form-group">
-                        <label for="firstTime">First Train Time (HH:mm - military time)</label>
-                        <input type="time" class="form-control" id="firstTime" placeholder="When is the first one?">
+                        <label for="firstTime">First Train Time (HH:mm - 24 hour format)</label>
+                        <input type="text" class="form-control" id="firstTime" placeholder="When is the first one?"
+                            pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
                     </div>
                     <div class="form-group">
                         <label for="frequency">Frequency (min)</label>
@@ -97,10 +72,11 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/javascript/script.js"></script>
