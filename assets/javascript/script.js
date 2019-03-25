@@ -9,6 +9,11 @@ var config = {
 };
 firebase.initializeApp(config);
 
+$(document).ready(function () {
+    //set focus to trainName
+    $("#trainName").focus();
+});
+
 // Create a variable to reference the database.
 let database = firebase.database();
 let dataRef = database.ref();
@@ -28,6 +33,16 @@ $("button").on("click", function (event) {
         frequency: frequency
     };
 
+    if (!moment(firstTime, 'HH:mm', true).isValid()) {
+        // $("#firstTime").css("border-color", "red");
+        $("#firstTime").focus();
+        $("button").off("click");
+        alert("Please enter First Train Time in 24hr format!");
+    } else {
+        $("#trainName").focus();
+        // $("#firstTime").css("border-color", "light-grey");
+    };
+
     //send info to firebase
     dataRef.push(newTrain);
 
@@ -36,6 +51,9 @@ $("button").on("click", function (event) {
     $("#trainDestination").val("");
     $("#firstTime").val("");
     $("#frequency").val("");
+
+    //set focus to trainName
+    // $("#trainName").focus();
 });
 
 
@@ -47,30 +65,27 @@ dataRef.on("child_added", function (childSnapshot) {
     let trainDestination = childSnapshot.val().destination;
     let firstTime = childSnapshot.val().firstTime;
     let frequency = childSnapshot.val().frequency;
+    let startTime = moment(firstTime, "HH:mm", true).subtract(1, "years").format();
 
-    console.log("train name: " + trainName);
-    console.log("destination: " + trainDestination);
-    console.log("start time: " + firstTime);
-    console.log("frequency: " + frequency);
+    // Difference between the times
+    let diffTime = moment().diff(moment(startTime), "minutes");
 
-    /*calculate with moment
-    current time
-    first train time
-    frequency
-    minutes to next*/
-    let now = moment();
-    let nextArrival = moment.unix(firstTime).format("HH:mm");
-    let minAway = moment
+    // Time apart (remainder)
+    let tRemainder = diffTime % frequency;
 
-    console.log("current time: " + now);
+    // Minute Until Train
+    let minAway = frequency - tRemainder;
+
+    // Next Train
+    let nextArrival = moment().add(minAway, "minutes");
 
     //create new rows with retrieved information
     let newRow = $("<div>").addClass("row").append(
         $("<p>").addClass("col").text(trainName),
         $("<p>").addClass("col").text(trainDestination),
         $("<p>").addClass("col").text(frequency),
-        $("<p>").addClass("col").text(nextArrival),
-        $("<p>").addClass("col").text(""),
+        $("<p>").addClass("col").text(nextArrival.format("HH:mm")),
+        $("<p>").addClass("col").text(minAway),
     );
     $("#new-train").append(newRow);
 });
